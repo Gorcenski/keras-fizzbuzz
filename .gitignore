@@ -5,3 +5,5 @@
 **/.vscode/*
 **/env/*
 **/.ipynb_checkpoints/*
+
+mymodel.pkl
