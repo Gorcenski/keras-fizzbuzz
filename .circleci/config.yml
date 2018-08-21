@@ -10,6 +10,7 @@ jobs:
           command: |
               python3 -m venv env
               . env/bin/activate
+              aws configure set region us-east-2
               ls ~/.aws/
               # pip install --upgrade pip
               # pip install -r requirements.txt
