@@ -2,8 +2,8 @@ cmd: python train.py
 deps:
 - md5: 9640ecdb00b46a73285ad00ef7ab2357
   path: train.py
-md5: eae036622ab7bacbc8a10c39630e7b57
+md5: d514d8c80c142d700344b7af80cace39
 outs:
 - cache: true
-  md5: 1d1b5e72968ade123e80286bc76bcc34
+  md5: 624a6a604526e4a67be3d05ed5898584
   path: mymodel.pkl
