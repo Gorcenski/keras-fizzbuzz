@@ -2,22 +2,23 @@
 import pickle
 import numpy as np
 import train
+import keras
+import unittest
 
-def classify(i):
-    """A really quick nasty way to validate the model"""
-    prediction = PICKLE_MODEL.predict(np.array([train.extract_features(i)]))
-    result = np.argmax(prediction)
-    if result == 1:
-        return 'fizz'
-    if result == 2:
-        return 'buzz'
-    if result == 3:
-        return 'fizzbuzz'
-    return str(i)
+
+class TestAccuracy(unittest.TestCase):
+    PKL_FILENAME = "mymodel.pkl"
+
+    def test_sufficient_accuracy(self):
+        train.make_keras_picklable()    
+        with open(self.PKL_FILENAME, 'rb') as file:
+            model = pickle.load(file)
+        training_points = range(0, 101)
+        data = np.array([train.extract_features(i) for i in training_points])
+        labels = np.array([train.fizzbuzz(i) for i in training_points])
+        score = model.evaluate(data, keras.utils.to_categorical(labels), batch_size=64)
+
+        self.assertGreaterEqual(score[1], 0.95)
 
 if __name__ == "__main__":
-    train.make_keras_picklable()
-    PKL_FILENAME = "mymodel.pkl"
-    with open(PKL_FILENAME, 'rb') as file:
-        PICKLE_MODEL = pickle.load(file)
-    print([classify(i) for i in range(1, 100 + 1)])
+    unittest.main()
