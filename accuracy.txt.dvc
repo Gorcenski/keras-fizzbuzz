@@ -1,0 +1,14 @@
+cmd: python validate.py
+deps:
+- md5: 624a6a604526e4a67be3d05ed5898584
+  path: mymodel.pkl
+- md5: 9640ecdb00b46a73285ad00ef7ab2357
+  path: train.py
+- md5: c2bcd925c49d2bbdec385e7b5eceb8db
+  path: validate.py
+md5: 97823575f5c0d130bcc8da24bac6de17
+outs:
+- cache: false
+  md5: fc4c89374357aebbf3e22f25e75d1706
+  metric: true
+  path: accuracy.txt
