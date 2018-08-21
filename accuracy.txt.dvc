@@ -1,14 +1,14 @@
 cmd: python validate.py
 deps:
-- md5: 7e86682b64cb7db2c64215035a0cdacd
+- md5: 6527eb5239adb7c2cbb85332e6c4a5ef
   path: mymodel.pkl
-- md5: 9640ecdb00b46a73285ad00ef7ab2357
+- md5: c705fc5713f14000b92701c0527b8280
   path: train.py
 - md5: c2bcd925c49d2bbdec385e7b5eceb8db
   path: validate.py
-md5: 72114bb0587813cff7dd1135bcc261be
+md5: 01bc3f860c0246f2da1ff0fb363dc8da
 outs:
 - cache: false
-  md5: c3e87ae6083504099d1d824226a5ae3c
+  md5: e4c2e8edac362acab7123654b9e73432
   metric: true
   path: accuracy.txt
