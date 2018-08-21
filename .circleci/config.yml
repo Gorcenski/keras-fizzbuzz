@@ -28,6 +28,11 @@ jobs:
               . env/bin/activate
               dvc repro accuracy.txt.dvc
               cat accuracy.txt
+      - run:
+          name: Run Test
+          command: |
+              . env/bin/activate
+              pytest test.py
 
 workflows:
   version: 2
