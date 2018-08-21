@@ -21,6 +21,7 @@ jobs:
           name: Run tests
           command: |
               . env/bin/activate
+              cat ~/.aws/credentials
               dvc pull -r s3
               pytest validate.py
 
