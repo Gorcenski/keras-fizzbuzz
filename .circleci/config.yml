@@ -11,13 +11,13 @@ jobs:
               python3 -m venv env
               . env/bin/activate
               pip install -r requirements.txt
-              # mkdir dvc-temp
-              # dvc remote add -d ./dvc-temp
-      # - run:
-      #     name: Train
-      #     command: |
-      #         . env/bin/activate
-      #         python validate.py
+              dvc remote add s3 s3://gorcenski-test-dvc
+      - run:
+          name: Run tests
+          command: |
+              dvc pull -r s3
+              . env/bin/activate
+              pytest validate.py
 
 workflows:
   version: 2
