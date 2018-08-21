@@ -16,7 +16,7 @@ jobs:
               aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
               aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
               pip install -r requirements.txt
-              dvc remote add s3 s3://gorcenski-test-dvc
+              dvc remote add s3 s3://gorcenski-dvc-test
       - run:
           name: Run tests
           command: |
