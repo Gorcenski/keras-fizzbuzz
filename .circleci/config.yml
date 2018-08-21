@@ -17,17 +17,11 @@ jobs:
               aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
               dvc remote add s3 s3://gorcenski-dvc-test
       - run:
-          name: Train
+          name: Train & Evaluate
           command: |
               . env/bin/activate
               dvc pull -r s3
-              dvc repro mymodel.pkl.dvc
-      - run:
-          name: Evaluate
-          command: |
-              . env/bin/activate
               dvc repro accuracy.txt.dvc
-              cat accuracy.txt
       - run:
           name: Run Test
           command: |
