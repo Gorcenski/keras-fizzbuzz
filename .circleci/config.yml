@@ -10,16 +10,18 @@ jobs:
           command: |
               python3 -m venv env
               . env/bin/activate
-              ls ~/.aws/
-              # pip install --upgrade pip
-              # pip install -r requirements.txt
-              # dvc remote add s3 s3://gorcenski-test-dvc
-      # - run:
-      #     name: Run tests
-      #     command: |
-      #         . env/bin/activate
-      #         dvc pull -r s3
-      #         pytest validate.py
+              pip install --upgrade pip
+              pip install -r requirements.txt
+              aws configure set region us-east-2
+              aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+              aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+              dvc remote add s3 s3://gorcenski-dvc-test
+      - run:
+          name: Run tests
+          command: |
+              . env/bin/activate
+              dvc pull -r s3
+              pytest validate.py
 
 workflows:
   version: 2

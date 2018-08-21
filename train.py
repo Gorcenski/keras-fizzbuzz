@@ -61,7 +61,8 @@ def compile_model(data):
     """Set up the model based on the data"""
     dim = np.shape(data)[1]
     model = Sequential()
-    model.add(Dense(10, activation='relu', input_dim=dim))
+    model.add(Dense(4, activation='relu', input_dim=dim))
+    model.add(keras.layers.Dropout(0.8))
     model.add(Dense(4, activation='softmax'))
     model.compile(optimizer='rmsprop',
                   loss='categorical_crossentropy',
