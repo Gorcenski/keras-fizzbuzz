@@ -2,3 +2,6 @@
 url = /Users/emilygorcenski/dvc-temp
 [core]
 remote = myremote
+['remote "s3"']
+url = s3://gorcenski-dvc-test/
+region = us-east-2
