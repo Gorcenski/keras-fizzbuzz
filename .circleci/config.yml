@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Train and Evaluate
           command: |
-              . env/bin/activate
+              # . env/bin/activate
               dvc pull -r s3
               dvc repro mymodel.pkl.dvc
               dvc repro accuracy.txt.dvc
