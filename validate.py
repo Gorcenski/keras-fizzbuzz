@@ -1,24 +1,23 @@
 """Validate the example problem"""
 import pickle
 import numpy as np
-import train
 import keras
-import unittest
+import train
 
 
-class TestAccuracy(unittest.TestCase):
-    PKL_FILENAME = "mymodel.pkl"
+PKL_FILENAME = "mymodel.pkl"
 
-    def test_sufficient_accuracy(self):
-        train.make_keras_picklable()    
-        with open(self.PKL_FILENAME, 'rb') as file:
-            model = pickle.load(file)
-        training_points = range(0, 101)
-        data = np.array([train.extract_features(i) for i in training_points])
-        labels = np.array([train.fizzbuzz(i) for i in training_points])
-        score = model.evaluate(data, keras.utils.to_categorical(labels), batch_size=64)
+def evaluate():
+    train.make_keras_picklable()
+    with open(PKL_FILENAME, 'rb') as file:
+        model = pickle.load(file)
+    training_points = range(0, 101)
+    data = np.array([train.extract_features(i) for i in training_points])
+    labels = np.array([train.fizzbuzz(i) for i in training_points])
+    score = model.evaluate(data, keras.utils.to_categorical(labels), batch_size=64)
+    with open("accuracy.txt", 'w') as file:
+        file.write(str(score[1]))
 
-        self.assertGreaterEqual(score[1], 0.95)
 
 if __name__ == "__main__":
-    unittest.main()
+    evaluate()
