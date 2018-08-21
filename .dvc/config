@@ -1,5 +1,3 @@
-['remote "myremote"']
-url = /Users/emilygorcenski/dvc-temp
 [core]
 remote = myremote
 ['remote "s3"']
