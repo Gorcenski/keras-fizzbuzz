@@ -13,16 +13,14 @@ jobs:
               pip install --upgrade pip
               pip install awscli
               aws configure set region us-east-2
-              ls ~/.aws/
-              
-              # pip install -r requirements.txt
-              # dvc remote add s3 s3://gorcenski-test-dvc
-      # - run:
-      #     name: Run tests
-      #     command: |
-      #         . env/bin/activate
-      #         dvc pull -r s3
-      #         pytest validate.py
+              pip install -r requirements.txt
+              dvc remote add s3 s3://gorcenski-test-dvc
+      - run:
+          name: Run tests
+          command: |
+              . env/bin/activate
+              dvc pull -r s3
+              pytest validate.py
 
 workflows:
   version: 2
